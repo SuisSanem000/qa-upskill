@@ -1,0 +1,87 @@
+name: Playwright Tests CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  # TODO: Schedule — run nightly regression at 2 AM UTC
+  # schedule:
+  #   - cron: '0 2 * * *'
+
+jobs:
+  test:
+    # TODO: Set the OS — ubuntu-latest is recommended for CI (cost-effective)
+    runs-on: ubuntu-latest
+
+    strategy:
+      # TODO: Fail fast = false means all browsers run even if one fails
+      fail-fast: false
+      matrix:
+        # TODO: Define which browsers to test in CI
+        # Start with chromium only, then add firefox and webkit when stable
+        browser: [chromium]
+        # Optional: also run: [chromium, firefox, webkit]
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          # TODO: Set to the Node.js version you're using locally
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: phase3/package-lock.json
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm ci
+        working-directory: phase3
+
+      # Step 4: Install Playwright browsers
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+        working-directory: phase3
+
+      # Step 5: Run Playwright tests
+      - name: Run Playwright tests
+        run: npx playwright test --project=${{ matrix.browser }}
+        working-directory: phase3
+        env:
+          # TODO: Add any environment variables your tests need
+          # BASE_URL: https://the-internet.herokuapp.com
+          CI: true
+
+      # Step 6: Upload test report as artifact (available after workflow)
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        # Always upload report, even if tests fail
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.browser }}
+          path: phase3/playwright-report/
+          retention-days: 30
+
+      # Step 7 (OPTIONAL): Upload test results for further processing
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-${{ matrix.browser }}
+          path: phase3/test-results/
+          retention-days: 7
+
+  # TODO: Optional — Add a job that runs k6 performance test after the Playwright tests
+  # performance:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Run k6 load test
+  #       uses: grafana/k6-action@v0.3.1
+  #       with:
+  #         filename: phase2/day19/load-test.js

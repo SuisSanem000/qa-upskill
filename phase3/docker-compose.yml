@@ -1,0 +1,54 @@
+# ============================================================
+# docker-compose.yml — QA Upskill Test Orchestration
+# ============================================================
+# Usage:
+#   docker-compose up              — Run tests
+#   docker-compose up --build      — Rebuild image and run
+#   docker-compose down            — Clean up containers
+
+version: '3.8'
+
+services:
+
+  # ============================================================
+  # Playwright Test Service
+  # ============================================================
+  playwright:
+    # TODO: Build from the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # Container name for easy reference
+    container_name: qa-playwright-tests
+
+    # TODO: Mount the test results folder so reports are accessible on host
+    # Format: - ./host-path:/container-path
+    volumes:
+      - ./playwright-report:/app/playwright-report
+      - ./test-results:/app/test-results
+
+    # TODO: Set environment variables
+    environment:
+      - CI=true
+      # TODO: Add BASE_URL if needed
+      # - BASE_URL=https://the-internet.herokuapp.com
+
+    # TODO: Override the default command to run specific tests
+    # Remove this if you want to run all tests (uses Dockerfile CMD)
+    # command: npx playwright test tests/day21-login.spec.js
+
+    # Exit code propagation — docker-compose exits with test exit code
+    # This is important for CI to know if tests passed or failed
+
+  # ============================================================
+  # OPTIONAL: Add a reporting service (e.g., Allure, custom dashboard)
+  # ============================================================
+  # report-server:
+  #   image: nginx:alpine
+  #   volumes:
+  #     - ./playwright-report:/usr/share/nginx/html:ro
+  #   ports:
+  #     - "8080:80"
+  #   depends_on:
+  #     - playwright
