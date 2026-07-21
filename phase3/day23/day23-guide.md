@@ -1,8 +1,8 @@
-# Day 23 — Page Object Model & Form Interactions
+﻿# Day 23 — Page Object Model & Form Interactions
 
 > **Phase:** 3 — Automation
 > **Duration:** 1 hour
-> **Deliverable:** Completed `tests/day23-forms.spec.js`
+> **Deliverable:** Completed `tests/day23-forms.spec.ts`
 
 ---
 
@@ -80,7 +80,7 @@ await expect(newPage).toHaveTitle('...');
 
 ## 🛠️ Task (45 min)
 
-Complete `tests/day23-forms.spec.js` — 6 tests covering POM, file upload, keyboard, drag-drop, windows, and iFrames.
+Complete `tests/day23-forms.spec.ts` — 6 tests covering POM, file upload, keyboard, drag-drop, windows, and iFrames.
 
 ---
 
@@ -91,5 +91,5 @@ phase3/day23/
 └── day23-guide.md  ← This file
 
 Automation code:
-phase3/tests/day23-forms.spec.js
+phase3/tests/day23-forms.spec.ts
 ```

@@ -1,4 +1,4 @@
-# QA Upskill — 30-Day Portfolio
+﻿# QA Upskill — 30-Day Portfolio
 
 > A complete, practical QA portfolio built by transitioning from Developer → QA Analyst.
 > **Duration:** 30 days | 1 hour/day | Started: 2026-07-20
@@ -27,7 +27,7 @@ qa-upskill/
 │   ├── features/     ← BDD Gherkin feature files
 │   ├── step-definitions/ ← Cucumber step definitions
 │   ├── cypress/      ← Cypress tests
-│   ├── playwright.config.js
+│   ├── playwright.config.ts
 │   ├── Dockerfile
 │   └── docker-compose.yml
 ├── .github/
@@ -56,7 +56,7 @@ npx playwright install
 npx playwright test
 
 # Run a specific test file
-npx playwright test tests/day21-login.spec.js
+npx playwright test tests/day21-login.spec.ts
 
 # Open interactive UI mode
 npx playwright test --ui

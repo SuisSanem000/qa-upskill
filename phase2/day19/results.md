@@ -1,6 +1,6 @@
-# Day 19 — k6 Load Test Results
+﻿# Day 19 — k6 Load Test Results
 
-> **Instructions:** Run `k6 run load-test.js` and paste/summarize the output here.
+> **Instructions:** Run `k6 run load-test.ts` and paste/summarize the output here.
 
 ---
 

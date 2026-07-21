@@ -1,4 +1,4 @@
-# QA Upskill — 30-Day Roadmap
+﻿# QA Upskill — 30-Day Roadmap
 
 > A structured program for a developer transitioning into QA.  
 > **Time commitment:** 1 hour/day | **Start date:** 2026-07-20
@@ -95,7 +95,7 @@ qa-upskill/
 │   └── ...
 ├── phase3/                      ← Automation code
 │   ├── day21/
-│   ├── playwright.config.js
+│   ├── playwright.config.ts
 │   ├── tests/
 │   └── .github/workflows/
 └── package.json

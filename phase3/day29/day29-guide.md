@@ -1,4 +1,4 @@
-# Day 29 — Flaky Test Management & AI/LLM Testing Intro
+﻿# Day 29 — Flaky Test Management & AI/LLM Testing Intro
 
 > **Phase:** 3 — Automation & CI/CD
 > **Duration:** 1 hour
@@ -54,7 +54,7 @@ await page.waitForSelector('#result', { state: 'visible' });
 await page.waitForLoadState('networkidle');
 
 // ✅ Retry flaky tests in Playwright config
-// playwright.config.js: retries: 2
+// playwright.config.ts: retries: 2
 
 // ✅ Isolate state with test.beforeEach and API setup
 test.beforeEach(async ({ request }) => {
@@ -65,7 +65,7 @@ test.beforeEach(async ({ request }) => {
 ### Playwright Test Retry
 
 ```javascript
-// playwright.config.js
+// playwright.config.ts
 module.exports = {
     retries: process.env.CI ? 2 : 0,  // Retry on CI, not locally
 };

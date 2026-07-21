@@ -1,8 +1,8 @@
-# Day 22 — Playwright: Navigation, Locators & Assertions
+﻿# Day 22 — Playwright: Navigation, Locators & Assertions
 
 > **Phase:** 3 — Automation
 > **Duration:** 1 hour
-> **Deliverable:** Completed `tests/day22-navigation.spec.js`
+> **Deliverable:** Completed `tests/day22-navigation.spec.ts`
 
 ---
 
@@ -75,7 +75,7 @@ await page.reload();                   // Refresh page
 
 ## 🛠️ Task (40 min)
 
-Complete `tests/day22-navigation.spec.js` — it covers navigation across multiple pages of the-internet.herokuapp.com.
+Complete `tests/day22-navigation.spec.ts` — it covers navigation across multiple pages of the-internet.herokuapp.com.
 
 ---
 
@@ -86,5 +86,5 @@ phase3/day22/
 └── day22-guide.md  ← This file
 
 Automation code:
-phase3/tests/day22-navigation.spec.js
+phase3/tests/day22-navigation.spec.ts
 ```

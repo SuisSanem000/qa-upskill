@@ -1,10 +1,10 @@
-# Day 19 — Performance Testing with k6
+﻿# Day 19 — Performance Testing with k6
 
 > **Phase:** 2 — API, Backend & Performance
 > **Duration:** 1 hour
 > **Tool:** k6 (https://k6.io/)
 > **Target:** https://the-internet.herokuapp.com + https://restful-booker.herokuapp.com
-> **Deliverables:** `load-test.js` + `results.md`
+> **Deliverables:** `load-test.ts` + `results.md`
 
 ---
 
@@ -108,7 +108,7 @@ export default function () {
 
 **Run it:**
 ```bash
-k6 run load-test.js
+k6 run load-test.ts
 ```
 
 ---
@@ -120,7 +120,7 @@ k6 run load-test.js
 k6 version
 ```
 
-**Part 2 (25 min) — Complete `load-test.js`:**
+**Part 2 (25 min) — Complete `load-test.ts`:**
 The file has placeholders for you to fill in. Run the test and document results in `results.md`.
 
 ---
@@ -149,6 +149,6 @@ The file has placeholders for you to fill in. Run the test and document results 
 ```
 phase2/day19/
 ├── day19-guide.md  ← This file
-├── load-test.js    ← Your k6 test script (complete the TODOs)
+├── load-test.ts    ← Your k6 test script (complete the TODOs)
 └── results.md      ← Document your test execution results here
 ```

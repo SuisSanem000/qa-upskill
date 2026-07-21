@@ -1,4 +1,4 @@
-# Day 21 — Setup Notes
+﻿# Day 21 — Setup Notes
 
 > Document any issues you encountered during Playwright setup.
 
@@ -23,7 +23,7 @@
 - [ ] Browsers downloaded (Chromium, Firefox, WebKit)
 - [ ] `npx playwright test` ran example tests
 - [ ] HTML report opened with `npx playwright show-report`
-- [ ] `playwright.config.js` updated with `baseURL`
+- [ ] `playwright.config.ts` updated with `baseURL`
 
 ---
 

@@ -1,8 +1,8 @@
-# Day 26 — Cypress Overview & Comparison with Playwright
+﻿# Day 26 — Cypress Overview & Comparison with Playwright
 
 > **Phase:** 3 — Automation
 > **Duration:** 1 hour
-> **Deliverable:** `cypress/e2e/login.cy.js` completed + `comparison.md`
+> **Deliverable:** `cypress/e2e/login.cy.ts` completed + `comparison.md`
 
 ---
 
@@ -106,7 +106,7 @@ npm install --save-dev cypress
 npx cypress open  # Opens GUI, auto-generates example tests
 ```
 
-**Step 2:** Complete `cypress/e2e/login.cy.js`
+**Step 2:** Complete `cypress/e2e/login.cy.ts`
 
 **Step 3:** Complete `comparison.md` — your personal take after using both
 
@@ -120,6 +120,6 @@ phase3/day26/
 └── comparison.md    ← Your comparison writeup
 
 Cypress code:
-phase3/cypress/e2e/login.cy.js
+phase3/cypress/e2e/login.cy.ts
 phase3/cypress.config.js
 ```

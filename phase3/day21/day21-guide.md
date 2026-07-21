@@ -1,4 +1,4 @@
-# Day 21 — Playwright Setup & Project Scaffolding
+﻿# Day 21 — Playwright Setup & Project Scaffolding
 
 > **Phase:** 3 — Intro to Automation & CI/CD
 > **Duration:** 1 hour
@@ -77,17 +77,17 @@ npx playwright show-report
 ```
 phase3/
 ├── tests/
-│   └── example.spec.js   ← Example test (generated)
-├── playwright.config.js  ← Configuration
+│   └── example.spec.ts   ← Example test (generated)
+├── playwright.config.ts  ← Configuration
 ├── package.json
 └── .github/
     └── workflows/
         └── playwright.yml
 ```
 
-### Step 4 — Update playwright.config.js
+### Step 4 — Update playwright.config.ts
 
-Open `playwright.config.js` and update:
+Open `playwright.config.ts` and update:
 ```javascript
 // Set baseURL to our test site
 baseURL: 'https://the-internet.herokuapp.com',
@@ -95,7 +95,7 @@ baseURL: 'https://the-internet.herokuapp.com',
 
 ### Step 5 — Write Your First Real Test
 
-Open `tests/example.spec.js` (or create `tests/day21-first-test.spec.js`) and fill in the TODO markers.
+Open `tests/example.spec.ts` (or create `tests/day21-first-test.spec.ts`) and fill in the TODO markers.
 
 ---
 
@@ -126,5 +126,5 @@ phase3/day21/
 └── setup-notes.md       ← Your notes from the setup process
 
 Note: The actual Playwright code lives at phase3/
-(playwright.config.js, tests/, package.json)
+(playwright.config.ts, tests/, package.json)
 ```

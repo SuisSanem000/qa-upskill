@@ -1,0 +1,28 @@
+{
+  "name": "qa-upskill-automation",
+  "version": "1.0.0",
+  "description": "QA Upskill — 30-Day Automation Portfolio",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "test:login": "playwright test tests/day21-login.spec.ts",
+    "test:nav": "playwright test tests/day22-navigation.spec.ts",
+    "test:forms": "playwright test tests/day23-forms.spec.ts",
+    "test:api": "playwright test tests/day24-api.spec.ts",
+    "cucumber": "cucumber-js features/**/*.feature",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@cucumber/cucumber": "^11.0.0",
+    "@types/node": "^22.0.0",
+    "cypress": "^13.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.0"
+  }
+}

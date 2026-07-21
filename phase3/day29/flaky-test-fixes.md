@@ -1,4 +1,4 @@
-# Day 29 — Flaky Test Fixes
+﻿# Day 29 — Flaky Test Fixes
 
 > **Instructions:** Identify potentially flaky tests from your Playwright suite.
 > Document the root cause and your fix.
@@ -7,7 +7,7 @@
 
 ## Flaky Test 1
 
-**Test Name/File:** `[ TODO: e.g., NAV-004 — Dynamic loading in day22-navigation.spec.js ]`
+**Test Name/File:** `[ TODO: e.g., NAV-004 — Dynamic loading in day22-navigation.spec.ts ]`
 
 **Root Cause:**
 ```

@@ -1,8 +1,8 @@
-# Day 24 — Playwright API Testing
+﻿# Day 24 — Playwright API Testing
 
 > **Phase:** 3 — Automation
 > **Duration:** 1 hour
-> **Deliverable:** Completed `tests/day24-api.spec.js`
+> **Deliverable:** Completed `tests/day24-api.spec.ts`
 
 ---
 
@@ -56,11 +56,11 @@ test('API test', async ({ request }) => {
 
 ## 🛠️ Task (45 min)
 
-Complete `tests/day24-api.spec.js` — 7 API tests covering the full CRUD flow on Restful-Booker.
+Complete `tests/day24-api.spec.ts` — 7 API tests covering the full CRUD flow on Restful-Booker.
 
 Run with:
 ```bash
-npx playwright test tests/day24-api.spec.js --reporter=list
+npx playwright test tests/day24-api.spec.ts --reporter=list
 ```
 
 ---
@@ -72,5 +72,5 @@ phase3/day24/
 └── day24-guide.md  ← This file
 
 Automation code:
-phase3/tests/day24-api.spec.js
+phase3/tests/day24-api.spec.ts
 ```

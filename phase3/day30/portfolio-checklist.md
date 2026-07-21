@@ -1,4 +1,4 @@
-# Day 30 — Portfolio Audit Checklist
+﻿# Day 30 — Portfolio Audit Checklist
 
 > Rate each artifact 1–5 and note what needs improvement before publishing.
 
@@ -30,19 +30,19 @@
 | Contract Doc | `phase2/day15/consumer-contract.md` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
 | SQL Queries | `phase2/day16/verification-queries.sql` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
 | Lighthouse Results | `phase2/day18/lighthouse-audit-results.md` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
-| k6 Load Test | `phase2/day19/load-test.js` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
+| k6 Load Test | `phase2/day19/load-test.ts` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
 
 ## Phase 3 — Automation & CI/CD
 
 | Artifact | File | Rating (1-5) | Publish Ready? | Action Needed |
 |----------|------|-------------|---------------|--------------|
-| Playwright Config | `phase3/playwright.config.js` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
-| Login Tests | `phase3/tests/day21-login.spec.js` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
-| Navigation Tests | `phase3/tests/day22-navigation.spec.js` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
-| Form Tests | `phase3/tests/day23-forms.spec.js` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
-| API Tests | `phase3/tests/day24-api.spec.js` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
+| Playwright Config | `phase3/playwright.config.ts` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
+| Login Tests | `phase3/tests/day21-login.spec.ts` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
+| Navigation Tests | `phase3/tests/day22-navigation.spec.ts` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
+| Form Tests | `phase3/tests/day23-forms.spec.ts` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
+| API Tests | `phase3/tests/day24-api.spec.ts` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
 | BDD Feature | `phase3/features/login.feature` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
-| Step Definitions | `phase3/step-definitions/login.steps.js` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
+| Step Definitions | `phase3/step-definitions/login.steps.ts` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
 | GitHub Actions | `.github/workflows/playwright.yml` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
 | Dockerfile | `phase3/Dockerfile` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |
 | Flaky Test Fixes | `phase3/day29/flaky-test-fixes.md` | `[ ]` | `[ Y/N ]` | `[ TODO ]` |

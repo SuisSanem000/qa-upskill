@@ -1,4 +1,4 @@
-# QA Upskill — Project State
+﻿# QA Upskill — Project State
 
 > **Last Updated:** 2026-07-20  
 > **Current Day:** Day 1  
@@ -74,7 +74,7 @@ qa-upskill/
 │   └── ...
 ├── phase3/
 │   ├── day21/
-│   │   └── playwright.config.js
+│   │   └── playwright.config.ts
 │   └── ...
 └── README.md
 ```

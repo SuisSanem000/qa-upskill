@@ -1,4 +1,4 @@
-# Day 25 — BDD with Cucumber + Playwright
+﻿# Day 25 — BDD with Cucumber + Playwright
 
 > **Phase:** 3 — Automation
 > **Duration:** 1 hour
@@ -22,7 +22,7 @@
 ```
 feature/login.feature  (Gherkin — written by QA/PO)
          ↓
-step-definitions/login.steps.js  (JavaScript — written by Dev/QA)
+step-definitions/login.steps.ts  (JavaScript — written by Dev/QA)
          ↓
 Playwright browser automation
 ```
@@ -60,7 +60,7 @@ module.exports = {
 }
 ```
 
-### Step 4 — Complete step-definitions/login.steps.js
+### Step 4 — Complete step-definitions/login.steps.ts
 
 All TODO markers are in the file — complete them!
 
@@ -80,5 +80,5 @@ phase3/day25/
 
 BDD files:
 phase3/features/login.feature
-phase3/step-definitions/login.steps.js
+phase3/step-definitions/login.steps.ts
 ```
