@@ -4,8 +4,8 @@
 > One question is never repeated. Each daily session adds new unique questions.
 > Use this to revise before interviews — read out loud.
 >
-> **Last updated:** 2026-07-21 (Day 2)
-> **Total questions:** 10
+> **Last updated:** 2026-07-23 (Day 3)
+> **Total questions:** 15
 
 ---
 
@@ -129,3 +129,77 @@ The key value is discovering **paths that feature specs don't describe** — par
 
 Solutions: use a reference implementation, apply metamorphic testing (change input slightly and verify the *relationship* between outputs), or use human review as the oracle.
 
+---
+
+## Agile QA & Scrum Ceremonies `[Day 3]`
+
+---
+
+### Q11 — What is the role of a QA engineer in an Agile/Scrum team?
+
+**A:** In Agile, QA engineers are quality advocates embedded in the team throughout the entire sprint — not a gate at the end. Concretely:
+- **Sprint Planning:** Review stories for testability, write/refine acceptance criteria, estimate testing effort
+- **Backlog Refinement:** Flag ambiguous stories before they reach a sprint
+- **Three Amigos:** Ask edge-case questions before development begins
+- **During the sprint:** Execute tests continuously as stories are completed, not in a batch at the end
+- **Sprint Review:** Present test results and quality metrics to stakeholders
+- **Retrospective:** Raise process improvements for testing efficiency
+
+The key distinction from Waterfall QA: **prevention over detection.**
+
+---
+
+### Q12 — What is shift-left testing?
+
+**A:** Shift-left means moving testing activities earlier in the development lifecycle — to the left on a timeline. Instead of testing only after development is complete, QA activities begin at requirements:
+- Writing test cases before coding starts (helps developers understand edge cases)
+- Reviewing designs and wireframes for testability
+- Participating in PR reviews to spot missing error handling
+- Requiring unit test coverage as part of the Definition of Done
+
+Benefit: bugs found in planning cost a fraction of bugs found in production. The earlier a defect is caught, the cheaper it is to fix.
+
+---
+
+### Q13 — What is the Definition of Done, and who owns it?
+
+**A:** The Definition of Done (DoD) is a shared team agreement — a checklist that every user story must satisfy before being called "done." It is **owned by the whole team**, not just QA. Typical items include:
+- Code peer-reviewed
+- Unit tests written and passing (e.g. ≥ 80% coverage)
+- QA test cases executed and passed
+- No open Critical/High bugs
+- Acceptance criteria verified
+- Deployed to staging
+- Accessibility checked
+- Product Owner sign-off
+
+QA's role is to verify the DoD was honoured, not to be the only person who cares about it.
+
+---
+
+### Q14 — What is a Three Amigos meeting?
+
+**A:** A short collaboration session between **Business (Product Owner), Development, and QA** held before a story is developed. The goal is to surface ambiguities and align on the expected behaviour *before any code is written*.
+
+Each role brings a different lens:
+- **PO:** What does the business need?
+- **Dev:** How will this be built? What are the technical constraints?
+- **QA:** How will we verify this works? What could go wrong? What edge cases are missing from the story?
+
+The output is a shared understanding and updated acceptance criteria — preventing rework caused by misaligned assumptions.
+
+---
+
+### Q15 — What is the difference between acceptance criteria and test cases?
+
+**A:**
+
+| | Acceptance Criteria | Test Cases |
+|---|---|---|
+| Written by | Product Owner + QA | QA |
+| Format | Given/When/Then or bullet points | Step-by-step with exact data |
+| Level | Business / feature level | Implementation / execution level |
+| When | Before development | Before/during testing |
+| Example | "User can log in with valid credentials" | TC_LOGIN_001 with username: `tomsmith`, password: `SuperSecretPassword!` |
+
+Acceptance criteria define *what* success looks like. Test cases define *how* to verify it. One acceptance criterion typically generates multiple test cases (positive, negative, edge cases).
