@@ -4,8 +4,8 @@
 > One question is never repeated. Each daily session adds new unique questions.
 > Use this to revise before interviews — read out loud.
 >
-> **Last updated:** 2026-07-23 (Day 3)
-> **Total questions:** 15
+> **Last updated:** 2026-07-25 (Day 4)
+> **Total questions:** 20
 
 ---
 
@@ -203,3 +203,62 @@ The output is a shared understanding and updated acceptance criteria — prevent
 | Example | "User can log in with valid credentials" | TC_LOGIN_001 with username: `tomsmith`, password: `SuperSecretPassword!` |
 
 Acceptance criteria define *what* success looks like. Test cases define *how* to verify it. One acceptance criterion typically generates multiple test cases (positive, negative, edge cases).
+
+---
+
+## Bug Lifecycle & Reporting `[Day 4]`
+
+---
+
+### Q16 — What is the difference between Severity and Priority?
+
+**A:** 
+- **Severity** measures the technical impact of a bug on the system—how badly does it break functionality? (Set by QA).
+- **Priority** measures the business urgency—how soon must it be fixed? (Set by Product Owner/Manager).
+
+They are independent. A typo on the homepage is Low Severity (doesn't break anything) but High Priority (looks bad to customers). A crash on a hidden admin page used once a year is High Severity (system failure) but Low Priority (not urgent).
+
+---
+
+### Q17 — What makes a good, effective bug report?
+
+**A:** A good bug report is **objective, atomic, and highly reproducible.** It must contain:
+1. **Clear Title:** Specific summary (e.g., "500 error on upload when no file is selected").
+2. **Environment:** OS, Browser, App Version, Device.
+3. **Steps to Reproduce:** Numbered, unambiguous actions to trigger the bug.
+4. **Expected vs. Actual Result:** What should happen vs. what actually happened.
+5. **Attachments:** Screenshots, screen recordings, network logs (HAR), or console errors.
+
+If the developer cannot reproduce it based on the steps, they cannot fix it.
+
+---
+
+### Q18 — Explain the typical Bug Lifecycle.
+
+**A:** 
+1. **New:** QA logs the bug.
+2. **Assigned:** Triaged and assigned to a developer.
+3. **In Progress / Open:** Developer is actively fixing it.
+4. **Fixed:** Developer deploys the fix to the test environment.
+5. **Retest / Ready for QA:** QA verifies the fix.
+6. **Closed:** QA confirms the fix worked.
+*OR*
+**Reopened:** QA finds the bug is still present and sends it back to the developer.
+(Other states include **Deferred** for postponing, or **Rejected/Invalid** if it's by design).
+
+---
+
+### Q19 — What is a "flaky" bug, and how do you report it?
+
+**A:** A flaky bug (or intermittent bug) is one that doesn't reproduce 100% of the time. They are often caused by race conditions, network latency, or environment inconsistencies. 
+To report it effectively, I note the **reproducibility rate** (e.g., "Reproduces 3 out of 10 times") and provide as much contextual evidence as possible (timestamps, full logs, video). I never ignore a flaky bug; I log it so a pattern can be established over time.
+
+---
+
+### Q20 — What do you do if a developer rejects your bug, saying "It's not a bug, it's a feature"?
+
+**A:** 
+1. I cross-reference the behavior against the accepted requirements, user story, or Acceptance Criteria. 
+2. If the spec proves it's a bug, I present that to the developer.
+3. If the spec is missing or ambiguous, I don't argue with the developer—I escalate to the Product Owner to make a business decision.
+4. If the PO decides it *is* a feature, I request that the documentation be updated so future QA testers know the correct expected behavior.
