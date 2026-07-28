@@ -23,7 +23,10 @@ At the start of each session:
    - **Never repeat a question** that already exists in the file — check the existing questions first.
    - **Never create a new interview file** — always append to the same `interview-qa.md`.
    - Update the `Total questions:` count in the file header.
-6. **Update `documentation/project_state.md`** — mark the completed day as ✅ Done and update "Current Day" and "Last Updated".
+6. **Update `documentation/project_state.md`**:
+   - Mark the completed day as ✅ Done and update "Current Day" and "Last Updated".
+   - Set the "User Studied" field to `❌ False` for that day. It stays false even though the task is implemented.
+   - The "User Studied" field should only be changed to `✅ True` when the user specifically tells you to update it and specifies for which day number.
 
 ---
 
