@@ -4,8 +4,8 @@
 > One question is never repeated. Each daily session adds new unique questions.
 > Use this to revise before interviews — read out loud.
 >
-> **Last updated:** 2026-07-25 (Day 4)
-> **Total questions:** 20
+> **Last updated:** 2026-08-01 (Day 5)
+> **Total questions:** 25
 
 ---
 
@@ -262,3 +262,72 @@ To report it effectively, I note the **reproducibility rate** (e.g., "Reproduces
 2. If the spec proves it's a bug, I present that to the developer.
 3. If the spec is missing or ambiguous, I don't argue with the developer—I escalate to the Product Owner to make a business decision.
 4. If the PO decides it *is* a feature, I request that the documentation be updated so future QA testers know the correct expected behavior.
+
+---
+
+## Smoke, Sanity & Regression Testing `[Day 5]`
+
+---
+
+### Q21 — What is the difference between smoke testing and regression testing?
+
+**A:** They answer different questions at different points in the lifecycle:
+- **Smoke testing** asks *"Is this build stable enough to test?"* — it is **wide but shallow**, covering only the most critical paths. Run it immediately after a new build is deployed. If smoke fails, reject the build without further testing.
+- **Regression testing** asks *"Did our changes break anything that previously worked?"* — it is **wide and deep**, covering the full test suite. Run it before any release to catch regressions introduced by new code.
+
+*Memory aid: Smoke = survival check. Regression = full health check.*
+
+---
+
+### Q22 — What is sanity testing, and how does it differ from smoke testing?
+
+**A:**
+- **Smoke testing** is run after a **new build** and checks the overall system's health across many features. It is usually scripted.
+- **Sanity testing** is run after a **specific bug fix or minor change** and checks only that particular area. It is narrower, often informal, and does not re-run the full suite.
+
+Example: A developer fixes a bug where the dropdown resets on page load. Sanity testing = navigate to the dropdown page, verify the fix. Nothing else. You are *not* re-testing login or file upload.
+
+---
+
+### Q23 — How do you decide which test cases belong in a smoke suite vs. a regression suite?
+
+**A:** The key filter for smoke is: *"If this test fails, is the build completely worthless and should be sent back to development immediately?"* Only tests meeting that bar belong in smoke — typically 5–15 tests maximum.
+
+Everything else goes into the regression suite, prioritized by:
+1. **Business criticality** — what features drive the most revenue or user trust?
+2. **Blast radius** — what areas are most likely to be affected by the recent change?
+3. **Historical bug density** — what areas have had bugs before?
+
+The goal is maximum risk coverage with minimum execution time.
+
+---
+
+### Q24 — What is a regression bug, and what causes them?
+
+**A:** A regression bug is functionality that **worked correctly before a code change but is now broken**. It is the software equivalent of fixing one crack and creating two new ones.
+
+Common causes:
+- A developer modifies shared utility code that multiple features depend on
+- A dependency is upgraded and its API changes subtly
+- A configuration change (environment variable, feature flag) has unexpected side effects
+- A CSS/JS bundle change conflicts with an existing component
+
+This is why regression test suites must be maintained as living documents — they are your safety net for exactly this risk.
+
+---
+
+### Q25 — What is the Test Pyramid and why does it matter?
+
+**A:** The Test Pyramid is a model for balancing the composition of a test suite across three layers:
+
+```
+       /E2E (few)\
+      /Integration \
+     /  Unit Tests  \
+```
+
+- **Unit tests** (base): Fast, cheap, developer-written. Test individual functions. Should be the most numerous.
+- **Integration tests** (middle): Test how components interact. Slower and more complex. Medium number.
+- **E2E / UI tests** (top): Full user journey through the browser. Slowest and most expensive to maintain. Should be few in number, covering only the most critical flows.
+
+It matters because teams that invert the pyramid (too many E2E tests, too few unit tests) end up with slow, flaky, expensive test suites. The pyramid optimizes for fast feedback at the lowest possible cost.

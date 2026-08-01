@@ -1,7 +1,7 @@
 # QA Upskill — Project State
 
-> **Last Updated:** 2026-07-25  
-> **Current Day:** Day 5  
+> **Last Updated:** 2026-08-01  
+> **Current Day:** Day 6  
 > **Current Phase:** Phase 1 — Manual QA, Methodologies & Interview Prep
 
 ---
@@ -26,7 +26,7 @@
 | 2 | Test Design Techniques (EP, BVA, Decision Tables) | ✅ Done | `phase1/day02/` | ❌ False |
 | 3 | Agile QA & Scrum Ceremonies | ✅ Done | `phase1/day03/` | ❌ False |
 | 4 | Bug Lifecycle & Writing Effective Bug Reports | ✅ Done | `phase1/day04/` | ❌ False |
-| 5 | Smoke, Sanity & Regression Testing | 🔲 Not Started | `phase1/day05/` | ❌ False |
+| 5 | Smoke, Sanity & Regression Testing | ✅ Done | `phase1/day05/` | ❌ False |
 | 6 | Exploratory Testing & Session-Based Testing | 🔲 Not Started | `phase1/day06/` | ❌ False |
 | 7 | BDD & Gherkin Syntax | 🔲 Not Started | `phase1/day07/` | ❌ False |
 | 8 | Web UI QA — Cross-Browser & Responsive | 🔲 Not Started | `phase1/day08/` | ❌ False |
