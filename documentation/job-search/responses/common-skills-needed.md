@@ -11,6 +11,7 @@
     *   **Integration & System Testing:** Testing end-to-end user flows across multiple components.
     *   **UAT (User Acceptance Testing):** Validating against business requirements.
     *   **Cross-Browser / Cross-Device:** Verifying UI across Chrome, Safari, iOS, and Android.
+    *   **Behavior-Driven Development (BDD):** Writing tests using Gherkin syntax (Cucumber) to bridge business and technical requirements.
 
 ## 2. QA & Defect Tracking Tools
 *   **Issue Tracking:** **Jira** (by far the most common), Trello.
@@ -23,8 +24,8 @@
 *   **Database / SQL:** Writing **SQL** queries (PostgreSQL, MySQL) for backend data validation, data consistency checks, and database state verification.
 
 ## 4. Light Automation & Scripting
-*   **Frameworks:** **Playwright** and **Cypress** are heavily favored in modern JS/TS environments. Selenium is still present but often transitioning.
-*   **Languages:** JavaScript / TypeScript. Python is common for backend-heavy or data-heavy roles.
+*   **Frameworks:** **Playwright** is the overwhelmingly dominant automation framework in modern setups, significantly outpacing Cypress and Selenium in recent listings.
+*   **Languages:** TypeScript and JavaScript are the core languages for Playwright/Cypress. Python is also common for data-heavy roles. (Note: Java is frequently requested for enterprise QA roles, but TS/JS aligns best with your target profile).
 *   **Automation Scope:** UI end-to-end (E2E) testing, automated API checks.
 *   **CI/CD & Version Control:** **Git** (GitHub/GitLab), understanding basic CI/CD pipelines (GitHub Actions, Jenkins) to trigger automated test runs.
 *   **Web Technologies:** HTML, CSS, browser DevTools (Network tab, Console) for debugging.

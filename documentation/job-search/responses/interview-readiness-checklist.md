@@ -13,7 +13,8 @@ This checklist isolates the exact gaps between your target jobs and the items ma
 - [ ] **Data State Verification:** Testing how the database state changes before, during, and after an API POST/PUT request.
 
 ## 3. Light Automation Concepts (Phase 3 Focus)
-- [ ] **Playwright Basics:** Setup, navigation, locators (finding elements), and basic assertions (`expect(page).toHaveTitle()`).
+- [ ] **Playwright Basics:** Setup, navigation, locators (finding elements), and basic assertions (`expect(page).toHaveTitle()`). Playwright is highly requested!
+- [ ] **BDD / Cucumber:** Can you write and interpret basic Gherkin syntax (`Given`, `When`, `Then`) and explain how it ties into automated testing?
 - [ ] **Cypress vs. Playwright:** Understanding the architectural differences (e.g., Cypress runs inside the browser, Playwright uses CDP) so you can speak intelligently about them in interviews.
 - [ ] **Page Object Model (POM):** The standard design pattern for structuring automated tests so they are maintainable and reusable.
 
