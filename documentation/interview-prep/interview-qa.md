@@ -4,8 +4,8 @@
 > One question is never repeated. Each daily session adds new unique questions.
 > Use this to revise before interviews — read out loud.
 >
-> **Last updated:** 2026-07-25 (Day 4)
-> **Total questions:** 20
+> **Last updated:** 2026-08-03 (Day 5)
+> **Total questions:** 25
 
 ---
 
@@ -262,3 +262,42 @@ To report it effectively, I note the **reproducibility rate** (e.g., "Reproduces
 2. If the spec proves it's a bug, I present that to the developer.
 3. If the spec is missing or ambiguous, I don't argue with the developer—I escalate to the Product Owner to make a business decision.
 4. If the PO decides it *is* a feature, I request that the documentation be updated so future QA testers know the correct expected behavior.
+
+---
+
+## Smoke, Sanity & Regression Testing `[Day 5]`
+
+---
+
+### Q21 — What is the difference between Smoke Testing and Regression Testing?
+
+**A:** 
+- **Smoke Testing** is a quick, high-level check of the most critical features to ensure the build isn't completely broken (e.g., does the app load? can I log in?). It is wide but shallow.
+- **Regression Testing** is a comprehensive re-execution of the test suite to ensure recent code changes didn't break existing functionality. It is wide and deep, and takes much longer.
+
+---
+
+### Q22 — When do you perform Sanity Testing?
+
+**A:** Sanity Testing is performed after a specific bug fix or minor code change. Unlike Smoke Testing (which checks the whole system lightly), Sanity Testing is narrow and deep, focusing only on the component that was changed and its immediate dependencies to ensure the fix actually worked.
+
+---
+
+### Q23 — If you only have 1 hour to test before a major release, what do you do?
+
+**A:** I would perform a **Risk-Based Regression**. I cannot run the full suite, so I would prioritize:
+1. Smoke tests (core happy paths like login and checkout).
+2. Tests covering the areas that were just touched by the developers in this release.
+3. Tests covering the most business-critical or historically buggy features.
+
+---
+
+### Q24 — What is a regression bug?
+
+**A:** A regression bug is a defect in a feature that was previously working correctly, but broke after a new code change or environment update. It's the classic "it worked yesterday, but the new deployment broke it" scenario.
+
+---
+
+### Q25 — Why is manual regression testing considered problematic as a project grows?
+
+**A:** As a project grows, the regression suite grows linearly with every new feature. Running it manually becomes a massive bottleneck, taking days or weeks, leading to tester fatigue and delayed releases. This is why regression testing is the primary target for test automation.

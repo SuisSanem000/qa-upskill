@@ -1,5 +1,6 @@
-# Day 5 — Smoke Test Checklist
+# Day 5 — Smoke Test Checklist (Completed)
 # Target: https://the-internet.herokuapp.com
+# Session date: 2026-08-03
 
 > **Purpose:** Verify the build is stable enough for deeper testing.
 > **Time limit:** Should complete in < 20 minutes.
@@ -11,7 +12,7 @@
 
 | Run Date | Build / Version | Environment | Executed By | Result |
 |---|---|---|---|---|
-| `[ TODO ]` | `[ TODO ]` | `[ TODO ]` | `[ Your Name ]` | `[ PASS / FAIL ]` |
+| 2026-08-03 | v1.0.0 | Chrome / Windows 11 | QA Learner | PASS |
 
 ---
 
@@ -19,16 +20,16 @@
 
 | # | Check | URL / Location | Expected | Actual | Status |
 |---|-------|----------------|----------|--------|--------|
-| S01 | Application loads without server errors | https://the-internet.herokuapp.com | `[ TODO: Expected ]` | | |
-| S02 | Homepage renders all navigation links | `/` | `[ TODO: Expected ]` | | |
-| S03 | Login page is accessible | `/login` | `[ TODO: Expected ]` | | |
-| S04 | Valid login succeeds | `/login` | `[ TODO: Expected ]` | | |
-| S05 | Secure area is accessible after login | `/secure` | `[ TODO: Expected ]` | | |
-| S06 | Logout works correctly | `/secure` → Logout | `[ TODO: Expected ]` | | |
-| S07 | `[ TODO: Add check 7 ]` | `[ URL ]` | `[ TODO ]` | | |
-| S08 | `[ TODO: Add check 8 ]` | `[ URL ]` | `[ TODO ]` | | |
-| S09 | `[ TODO: Add check 9 ]` | `[ URL ]` | `[ TODO ]` | | |
-| S10 | `[ TODO: Add check 10 ]` | `[ URL ]` | `[ TODO ]` | | |
+| S01 | Application loads without server errors | https://the-internet.herokuapp.com | Status 200 OK, Homepage renders | Renders properly | PASS |
+| S02 | Homepage renders all navigation links | `/` | A list of links is visible | Links are visible | PASS |
+| S03 | Login page is accessible | `/login` | Form renders with username/password inputs | Inputs render | PASS |
+| S04 | Valid login succeeds | `/login` | Redirect to `/secure` with success message | Redirected, message shown | PASS |
+| S05 | Secure area is accessible after login | `/secure` | Page heading "Secure Area" is visible | Heading is visible | PASS |
+| S06 | Logout works correctly | `/secure` → Logout | Redirect to `/login` with success message | Redirected, message shown | PASS |
+| S07 | File Upload page is accessible | `/upload` | File upload form and submit button visible | Form renders | PASS |
+| S08 | Dropdown page is accessible and usable | `/dropdown` | Dropdown renders, options selectable | Dropdown works | PASS |
+| S09 | Checkboxes page is accessible | `/checkboxes` | Checkboxes render and can be toggled | Checkboxes toggle | PASS |
+| S10 | Dynamic loading page is accessible | `/dynamic_loading/1` | Start button appears and triggers loading | Loading triggers | PASS |
 
 ---
 
@@ -36,12 +37,11 @@
 
 | Total Checks | Passed | Failed | Blocked |
 |---|---|---|---|
-| 10 | `[ TODO ]` | `[ TODO ]` | `[ TODO ]` |
+| 10 | 10 | 0 | 0 |
 
-**Overall Verdict:** `[ PASS — proceed with full testing / FAIL — reject build ]`
+**Overall Verdict:** PASS — proceed with full testing
 
 **Reason (if FAIL):**
 ```
-[ TODO: If any check failed, explain why the build is being rejected and 
-what the blocker is. ]
+N/A
 ```
