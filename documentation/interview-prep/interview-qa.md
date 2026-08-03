@@ -269,35 +269,65 @@ To report it effectively, I note the **reproducibility rate** (e.g., "Reproduces
 
 ---
 
-### Q21 — What is the difference between Smoke Testing and Regression Testing?
+### Q21 — What is the difference between smoke testing and regression testing?
 
-**A:** 
-- **Smoke Testing** is a quick, high-level check of the most critical features to ensure the build isn't completely broken (e.g., does the app load? can I log in?). It is wide but shallow.
-- **Regression Testing** is a comprehensive re-execution of the test suite to ensure recent code changes didn't break existing functionality. It is wide and deep, and takes much longer.
+**A:** They answer different questions at different points in the lifecycle:
+- **Smoke testing** asks *"Is this build stable enough to test?"* — it is **wide but shallow**, covering only the most critical paths. Run it immediately after a new build is deployed. If smoke fails, reject the build without further testing.
+- **Regression testing** asks *"Did our changes break anything that previously worked?"* — it is **wide and deep**, covering the full test suite. Run it before any release to catch regressions introduced by new code.
 
----
-
-### Q22 — When do you perform Sanity Testing?
-
-**A:** Sanity Testing is performed after a specific bug fix or minor code change. Unlike Smoke Testing (which checks the whole system lightly), Sanity Testing is narrow and deep, focusing only on the component that was changed and its immediate dependencies to ensure the fix actually worked.
+*Memory aid: Smoke = survival check. Regression = full health check.*
 
 ---
 
-### Q23 — If you only have 1 hour to test before a major release, what do you do?
+### Q22 — What is sanity testing, and how does it differ from smoke testing?
 
-**A:** I would perform a **Risk-Based Regression**. I cannot run the full suite, so I would prioritize:
-1. Smoke tests (core happy paths like login and checkout).
-2. Tests covering the areas that were just touched by the developers in this release.
-3. Tests covering the most business-critical or historically buggy features.
+**A:**
+- **Smoke testing** is run after a **new build** and checks the overall system's health across many features. It is usually scripted.
+- **Sanity testing** is run after a **specific bug fix or minor change** and checks only that particular area. It is narrower, often informal, and does not re-run the full suite.
 
----
-
-### Q24 — What is a regression bug?
-
-**A:** A regression bug is a defect in a feature that was previously working correctly, but broke after a new code change or environment update. It's the classic "it worked yesterday, but the new deployment broke it" scenario.
+Example: A developer fixes a bug where the dropdown resets on page load. Sanity testing = navigate to the dropdown page, verify the fix. Nothing else. You are *not* re-testing login or file upload.
 
 ---
 
-### Q25 — Why is manual regression testing considered problematic as a project grows?
+### Q23 — How do you decide which test cases belong in a smoke suite vs. a regression suite?
 
-**A:** As a project grows, the regression suite grows linearly with every new feature. Running it manually becomes a massive bottleneck, taking days or weeks, leading to tester fatigue and delayed releases. This is why regression testing is the primary target for test automation.
+**A:** The key filter for smoke is: *"If this test fails, is the build completely worthless and should be sent back to development immediately?"* Only tests meeting that bar belong in smoke — typically 5–15 tests maximum.
+
+Everything else goes into the regression suite, prioritized by:
+1. **Business criticality** — what features drive the most revenue or user trust?
+2. **Blast radius** — what areas are most likely to be affected by the recent change?
+3. **Historical bug density** — what areas have had bugs before?
+
+The goal is maximum risk coverage with minimum execution time.
+
+---
+
+### Q24 — What is a regression bug, and what causes them?
+
+**A:** A regression bug is functionality that **worked correctly before a code change but is now broken**. It is the software equivalent of fixing one crack and creating two new ones.
+
+Common causes:
+- A developer modifies shared utility code that multiple features depend on
+- A dependency is upgraded and its API changes subtly
+- A configuration change (environment variable, feature flag) has unexpected side effects
+- A CSS/JS bundle change conflicts with an existing component
+
+This is why regression test suites must be maintained as living documents — they are your safety net for exactly this risk.
+
+---
+
+### Q25 — What is the Test Pyramid and why does it matter?
+
+**A:** The Test Pyramid is a model for balancing the composition of a test suite across three layers:
+
+```
+       /E2E (few)\
+      /Integration \
+     /  Unit Tests  \
+```
+
+- **Unit tests** (base): Fast, cheap, developer-written. Test individual functions. Should be the most numerous.
+- **Integration tests** (middle): Test how components interact. Slower and more complex. Medium number.
+- **E2E / UI tests** (top): Full user journey through the browser. Slowest and most expensive to maintain. Should be few in number, covering only the most critical flows.
+
+It matters because teams that invert the pyramid (too many E2E tests, too few unit tests) end up with slow, flaky, expensive test suites. The pyramid optimizes for fast feedback at the lowest possible cost.

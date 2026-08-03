@@ -1,6 +1,6 @@
 # QA Upskill — Project State
 
-> **Last Updated:** 2026-08-03  
+> **Last Updated:** 2026-08-03
 > **Current Day:** Day 6  
 > **Current Phase:** Phase 1 — Manual QA, Methodologies & Interview Prep
 

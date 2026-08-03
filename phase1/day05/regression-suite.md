@@ -2,142 +2,177 @@
 # Categorized test cases from Day 1 + new additions
 # Session date: 2026-08-03
 
-> **Instructions:** Categorize the Day 1 login test cases into Smoke / Sanity / Full Regression.
-> Then add 5 new test cases to the regression suite.
+> **Purpose:** Demonstrate how to categorize existing test cases into Smoke / Sanity / Full Regression
+> and extend the suite with new tests covering other pages.
 
 ---
 
 ## Part 1 — Categorization of Day 1 Test Cases
 
-For each test case, decide which bucket it belongs in and justify your decision.
+**Decision criteria used:**
+- **Smoke** → Must-pass gate. The single most critical scenario. If this fails, the whole build is rejected.
+- **Sanity** → Run after a bug fix or targeted change to verify a specific area. Narrow focus.
+- **Full Regression** → The complete safety net. Run before any release to ensure nothing is broken.
 
 | Test Case ID | Title | Category | Justification |
 |---|---|---|---|
-| TC_LOGIN_001 | Successful login with valid credentials | Smoke | Tests the most critical path (happy path). If this fails, the app is unusable. |
-| TC_LOGIN_002 | Login with invalid username | Sanity / Regression | Narrow focus. Useful in sanity if auth service changed. Included in Full Regression. |
-| TC_LOGIN_003 | Login with invalid password | Regression | Not critical for smoke. Edge case covered in full regression suite. |
-| TC_LOGIN_004 | Login with empty username | Regression | Edge case handling, not critical for base build stability. |
-| TC_LOGIN_005 | Login with empty password | Regression | Same as above. |
-| TC_LOGIN_006 | Login with both fields empty | Regression | Validating specific error logic, belongs in full regression. |
-| TC_LOGIN_007 | Password field masks input | Sanity / Regression | UI validation; run during sanity if login UI changed, otherwise full regression. |
-| TC_LOGIN_008 | SQL injection attempt | Regression | Security edge case. Important but not a daily smoke blocker. |
-| TC_LOGIN_009 | Case sensitivity of username | Regression | Specific boundary/edge condition test. |
-| TC_LOGIN_010 | Logout after successful login | Smoke | Core critical functionality; users must be able to securely exit. |
+| TC_LOGIN_001 | Successful login with valid credentials | **Smoke** | The single most critical check for authentication. If users cannot log in at all, the build is worthless — no further testing makes sense. This is the minimum viability gate for the login feature. |
+| TC_LOGIN_002 | Login with invalid username | **Full Regression** | Important security and UX validation, but not a "is the build alive?" check. Run it as part of the full regression suite to ensure error handling hasn't regressed after code changes. |
+| TC_LOGIN_003 | Login with invalid password | **Full Regression** | Same reasoning as TC_LOGIN_002. It validates a specific error message and path. Not a smoke-level concern, but must be caught by regression before release. |
+| TC_LOGIN_004 | Login with empty username | **Full Regression** | Edge-case empty-field behaviour. Important for correctness, but not a build-viability question. Belongs in full regression — it would typically be run when the login form is modified. |
+| TC_LOGIN_005 | Login with empty password | **Full Regression** | Same reasoning as TC_LOGIN_004. Part of the thorough empty-input battery. Run in full regression. |
+| TC_LOGIN_006 | Login with both fields empty | **Full Regression** | A combination edge case. Important for completeness but lowest business risk in the empty-input group. Belongs in full regression. |
+| TC_LOGIN_007 | Password field masks input | **Sanity** | A security/UI property check. Run this as a sanity test specifically after any front-end change to the login form (e.g., a UI redesign or an input component library upgrade) to verify `type="password"` wasn't accidentally removed. Not a daily smoke check. |
+| TC_LOGIN_008 | SQL injection attempt | **Full Regression** | A security regression check. Critically important before any release — if backend validation changes, this test catches a major vulnerability. However, it's not a "is the build alive?" check, so it doesn't belong in smoke. |
+| TC_LOGIN_009 | Case sensitivity of username | **Full Regression** | A correctness edge case for authentication rules. Important for regression (especially if an auth library is upgraded or username-handling logic changes) but too narrow for smoke. |
+| TC_LOGIN_010 | Logout after successful login | **Smoke** | Session termination is as critical as login itself. If a user cannot log out, it's a security and UX blocker. Logout belongs in the smoke suite as the second must-pass gate for the authentication journey. |
 
 ---
 
 ## Part 2 — New Regression Test Cases
 
-Add 5 new test cases to the regression suite covering different pages of the-internet.herokuapp.com.
+These 5 test cases extend coverage to other pages of the-internet.herokuapp.com and sit at the **Full Regression** level — they are important correctness checks but not build-gate checks.
 
-### TC_REG_001 — Dropdown Option Selection
+---
+
+### TC_REG_001 — Dropdown: Default State Has No Option Pre-Selected
 
 | Field | Value |
 |-------|-------|
-| **Page** | `/dropdown` |
-| **Category** | Regression |
+| **Page** | https://the-internet.herokuapp.com/dropdown |
+| **Category** | Full Regression |
 | **Priority** | Medium |
 
 **Steps:**
 ```
-1. Navigate to /dropdown
-2. Click on the dropdown element.
-3. Select 'Option 1'.
-4. Verify 'Option 1' is selected.
+1. Navigate to https://the-internet.herokuapp.com/dropdown
+2. Observe the dropdown without interacting with it.
+3. Inspect the currently displayed value in the dropdown control.
 ```
 
-**Expected Result:** Dropdown displays 'Option 1' as the selected value.
+**Expected Result:**
+The dropdown shows the placeholder text "Select Option" as the default. Neither "Option 1" nor "Option 2" is pre-selected. The default option has no real value (its `value` attribute is an empty string ""), confirming it is a placeholder, not a valid selection.
+
+**Why this matters:** A pre-selected value could cause users to unknowingly submit an unintended choice (especially in forms tied to business logic like pricing tiers or role assignment). This test protects against a developer accidentally adding a `selected` attribute to a non-placeholder option after a UI change.
 
 ---
 
-### TC_REG_002 — File Upload with Valid File
+### TC_REG_002 — Checkboxes: Initial State Matches Specification
 
 | Field | Value |
 |-------|-------|
-| **Page** | `/upload` |
-| **Category** | Sanity / Regression |
-| **Priority** | High |
-
-**Steps:**
-```
-1. Navigate to /upload
-2. Click 'Choose File' and select a valid small image (e.g., test.jpg).
-3. Click 'Upload'.
-```
-
-**Expected Result:** A success message "File Uploaded!" is displayed with the file name.
-
----
-
-### TC_REG_003 — Dynamic Loading Example 1
-
-| Field | Value |
-|-------|-------|
-| **Page** | `/dynamic_loading/1` |
-| **Category** | Regression |
+| **Page** | https://the-internet.herokuapp.com/checkboxes |
+| **Category** | Full Regression |
 | **Priority** | Medium |
 
 **Steps:**
 ```
-1. Navigate to /dynamic_loading/1
-2. Click the 'Start' button.
-3. Wait for the loading bar to disappear.
+1. Navigate to https://the-internet.herokuapp.com/checkboxes
+2. Observe the initial checked/unchecked state of Checkbox 1 and Checkbox 2 before any interaction.
+3. Compare observed state to the specification.
 ```
 
-**Expected Result:** "Hello World!" text is displayed after loading completes.
+**Expected Result:**
+Checkbox 1 is **unchecked** by default. Checkbox 2 is **checked** by default. This initial state persists on page refresh (it is not driven by session state, just the HTML default attributes).
+
+**Why this matters:** Default state regression is a common subtle bug — a developer may accidentally swap the `checked` attribute during a refactor. This test catches the regression immediately.
 
 ---
 
-### TC_REG_004 — Checkboxes Toggle State
+### TC_REG_003 — Checkboxes: Clicking Each Checkbox Toggles Its State
 
 | Field | Value |
 |-------|-------|
-| **Page** | `/checkboxes` |
-| **Category** | Regression |
+| **Page** | https://the-internet.herokuapp.com/checkboxes |
+| **Category** | Full Regression |
+| **Priority** | Medium |
+
+**Steps:**
+```
+1. Navigate to https://the-internet.herokuapp.com/checkboxes
+2. Click Checkbox 1 (initially unchecked).
+3. Verify Checkbox 1 is now checked.
+4. Click Checkbox 1 again.
+5. Verify Checkbox 1 is now unchecked again.
+6. Click Checkbox 2 (initially checked).
+7. Verify Checkbox 2 is now unchecked.
+```
+
+**Expected Result:**
+Each checkbox toggles independently. Clicking an unchecked checkbox makes it checked. Clicking a checked checkbox makes it unchecked. Interacting with one checkbox does not affect the other.
+
+**Why this matters:** Validates the independence of checkbox controls — a common JS event-listener bug can cause one checkbox's click handler to accidentally affect sibling elements.
+
+---
+
+### TC_REG_004 — Dynamic Content: Page Refreshes With New Content
+
+| Field | Value |
+|-------|-------|
+| **Page** | https://the-internet.herokuapp.com/dynamic_content |
+| **Category** | Full Regression |
 | **Priority** | Low |
 
 **Steps:**
 ```
-1. Navigate to /checkboxes
-2. Verify Checkbox 1 is unchecked and Checkbox 2 is checked by default.
-3. Click Checkbox 1 to check it.
-4. Click Checkbox 2 to uncheck it.
+1. Navigate to https://the-internet.herokuapp.com/dynamic_content
+2. Note the text content and avatar images in all three rows.
+3. Press F5 / CMD+R to refresh the page.
+4. Compare the new content against the content noted in step 2.
 ```
 
-**Expected Result:** The visual state of the checkboxes successfully toggles in response to clicks.
+**Expected Result:**
+After refresh, at least some content (text descriptions and/or avatar images) changes in the three content rows. The page structure (3 rows, an image column, and a text column per row) remains consistent. No JavaScript errors are thrown. No broken image icons appear.
+
+**Why this matters:** This test validates that the dynamic content mechanism works correctly. A regression here might manifest as all rows showing the same content, content never changing, or images 404-ing after a CDN/asset path change.
 
 ---
 
-### TC_REG_005 — Context Menu Alert
+### TC_REG_005 — File Upload: Uploading a Valid File Displays the Filename
 
 | Field | Value |
 |-------|-------|
-| **Page** | `/context_menu` |
-| **Category** | Regression |
-| **Priority** | Medium |
+| **Page** | https://the-internet.herokuapp.com/upload |
+| **Category** | Full Regression |
+| **Priority** | High |
 
 **Steps:**
 ```
-1. Navigate to /context_menu
-2. Right-click within the dashed box.
+1. Navigate to https://the-internet.herokuapp.com/upload
+2. Click the "Choose File" button.
+3. In the file picker dialog, select a small valid file (e.g., a .txt or .png file ≤ 1KB).
+4. Click the "Upload" button.
+5. Observe the result page.
 ```
 
-**Expected Result:** A JavaScript alert appears saying "You selected a context menu".
+**Test Data:** Any small local file, e.g. `test-upload.txt` (contents: "QA upload test")
+
+**Expected Result:**
+The page transitions to a confirmation page with the heading "File Uploaded!" The filename (e.g., `test-upload.txt`) is displayed below the heading under a "File Uploaded!" label. No server error occurs.
+
+**Why this matters:** File upload is a high-risk feature that frequently breaks across browser versions, OS file system permission changes, or server-side multipart form handling updates. This is a High-priority regression test that should be run before every release.
 
 ---
 
 ## Regression Suite Summary
 
-| Category | Test Count | Estimated Execution Time |
-|----------|-----------|--------------------------|
-| Smoke | 2 | 2 min |
-| Sanity | 3 (approx) | 3-5 min |
-| Full Regression | 15 (10 old + 5 new) | 15-20 min |
+| Category | Test Count | Test IDs | Estimated Execution Time |
+|----------|-----------|----------|--------------------------|
+| Smoke | 2 | TC_LOGIN_001, TC_LOGIN_010 | ~3 min |
+| Sanity | 1 | TC_LOGIN_007 | ~1 min |
+| Full Regression | 12 | TC_LOGIN_002–006, TC_LOGIN_008–009, TC_REG_001–005 | ~20 min |
+| **TOTAL** | **15** | | **~24 min** |
+
+---
 
 ## Reflection
 
-```
-To decide between Smoke and Regression, I asked: "If this feature is broken, do we need to stop all testing?" Happy path login and logout are Smoke. Everything else is Regression (or Sanity if specifically targeted after a bug fix). 
+**What criteria did I use to decide Smoke vs Regression?**
 
-If we ran the full regression suite manually on every build, we would bottleneck the release process immensely. Manual testers would burn out executing the exact same 15+ tests daily, which perfectly highlights why we need to automate Regression testing down the line.
-```
+The key question for Smoke is: *"If this fails, is the entire build worthless?"* Only two login tests meet that bar — TC_LOGIN_001 (can users log in?) and TC_LOGIN_010 (can users log out?). Everything else is correctness validation that belongs in the full regression suite, because even if an error message is wrong, users can still get their core job done.
+
+Sanity sits between the two. TC_LOGIN_007 (password masking) is not a daily smoke check, but it IS something you'd specifically sanity-check after any CSS or input-component change — because it's easy to accidentally break `type="password"` during UI refactoring and it's a direct security regression.
+
+**What would happen if you ran the full regression suite on every build?**
+
+In a manual testing context, running all 15 tests on every build would add ~24 minutes of testing time to every deployment cycle. If you deploy multiple times a day, that's 1–2+ hours of manual testing overhead daily. Teams would either slow down their deployment cadence or QA would become a bottleneck. This is exactly why **smoke tests exist as a fast gate** — they answer "is it worth testing at all?" in 3 minutes, and the full suite is reserved for pre-release validation. In an automated pipeline, this cost collapses to seconds, which is why automation is so valuable.
