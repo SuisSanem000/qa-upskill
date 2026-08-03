@@ -1,5 +1,5 @@
 # Categorized Skill Gap & Study List
-*(Based on 23 recent Manual/Mid-Level QA & Light Automation Job Descriptions)*
+*(Based on your provided job search materials and target QA profile)*
 
 ## 1. Testing Methodologies & Processes
 *   **Agile/Scrum Ceremonies:** Active participation in sprints, backlog refinement, and daily stand-ups.
