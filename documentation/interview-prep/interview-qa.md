@@ -4,7 +4,7 @@
 > One question is never repeated. Each daily session adds new unique questions.
 > Use this to revise before interviews — read out loud.
 >
-> **Last updated:** 2026-08-01 (Day 5)
+> **Last updated:** 2026-08-03 (Day 5)
 > **Total questions:** 25
 
 ---

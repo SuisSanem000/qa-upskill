@@ -1,5 +1,6 @@
-# Day 5 — Smoke Test Checklist
+# Day 5 — Smoke Test Checklist (Completed)
 # Target: https://the-internet.herokuapp.com
+# Session date: 2026-08-03
 
 > **Purpose:** Verify the build is stable enough for deeper testing.
 > **Time limit:** Should complete in < 20 minutes.

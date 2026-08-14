@@ -1,5 +1,6 @@
-# Day 5 — Regression Suite
+# Day 5 — Regression Suite (Completed)
 # Categorized test cases from Day 1 + new additions
+# Session date: 2026-08-03
 
 > **Purpose:** Demonstrate how to categorize existing test cases into Smoke / Sanity / Full Regression
 > and extend the suite with new tests covering other pages.
